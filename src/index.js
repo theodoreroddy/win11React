@@ -10,9 +10,7 @@ import { asyncWithLDProvider } from 'launchdarkly-react-client-sdk';
     const LDProvider = await asyncWithLDProvider({
       clientSideID: '6238e4a84409e214da367c6a',
       user: {
-        "key": "12345",
-        "name": "Ted Roddy",
-        "email": "me@tedroddy"
+        "key": Math.random()
       },
       reactOptions: {
         useCamelCaseFlagKeys: false

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon, Image, ToolBar } from "../../../utils/general";
+import { useFlags } from 'launchdarkly-react-client-sdk'
 
 export const AboutWin = () => {
+  const flags = useFlags()
   const { abOpen } = useSelector((state) => state.desktop);
   const { locked, booted } = useSelector((state) => state.wallpaper);
   const [open, setOpen] = useState(true && process.env.REACT_APP_ENV != "development");
@@ -23,7 +25,7 @@ export const AboutWin = () => {
     }
   }, [timer, locked, booted]);
 
-  return open || abOpen ? (
+  return flags['disclaimer'] && (open || abOpen) ? (
     <div className="aboutApp floatTab dpShad">
       <div className="content p-6">
         <div className="text-xl font-semibold">About</div>
