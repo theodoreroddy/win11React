@@ -1,23 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Sentry from "@sentry/react";
-import { BrowserTracing } from "@sentry/tracing";
 import App from './App';
 import store from './reducers';
 import {Provider} from 'react-redux';
+import { asyncWithLDProvider } from 'launchdarkly-react-client-sdk';
 
-Sentry.init({
-  dsn: "https://6c16d34365334e0fbee992044f9d223b@o575799.ingest.sentry.io/6251530",
-  integrations: [new BrowserTracing()],
-
-  // Set tracesSampleRate to 1.0 to capture 100%
-  // of transactions for performance monitoring.
-  // We recommend adjusting this value in production
-  tracesSampleRate: 1.0,
-});
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root'));
+  (async () => {
+    
+    const LDProvider = await asyncWithLDProvider({
+      clientSideID: '6238e4a84409e214da367c6a',
+      user: {
+        "key": "12345",
+        "name": "Ted Roddy",
+        "email": "me@tedroddy"
+      },
+      reactOptions: {
+        useCamelCaseFlagKeys: false
+      }
+    });
+    
+    ReactDOM.render(
+      <Provider store={store}>
+        <LDProvider>
+          <App />
+        </LDProvider>
+      </Provider>,
+      document.getElementById('root'));
+  })();

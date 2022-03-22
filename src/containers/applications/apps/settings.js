@@ -105,7 +105,7 @@ export const Settings = () => {
                           return (
                             <div key={i} className={e.type}>
                               <div className="left">
-                                <img src={`img/wallpaper/${wall.src}`} alt="" className="device_img" />
+                                <img src={`${wall}`} alt="" className="device_img" />
                                 <div className="column_device">
                                   <p className="device_name">Liber-V</p>
                                   <p className="device_model">NS14A8</p>
@@ -154,28 +154,6 @@ export const Settings = () => {
                                 <div>
                                   <h3>Data Usage</h3>
                                   <p>{Math.round(Math.random() * 100)}GB, last 30 days</p>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        case "personaliseTop":
-                          return (
-                            <div key={i} className="personaliseTop">
-                              <img className="mainImg" src={`img/wallpaper/${wall.src}`} alt="" />
-                              <div>
-                                <h3>Select a theme to apply</h3>
-                                <div className="bgBox">
-                                  {wall.themes.map((e,i) => {
-                                    return (
-                                      <Image
-                                        key={i}
-                                        className={wall.src.includes(e) ? "selected" : ""}
-                                        src={`img/wallpaper/${e}/img0.jpg`} ext
-                                        onClick={handleWallAndTheme} click="WALLSET"
-                                        payload={`${e}/img0.jpg`}
-                                      />
-                                    )
-                                  })}
                                 </div>
                               </div>
                             </div>

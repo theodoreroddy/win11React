@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import { useFlags } from 'launchdarkly-react-client-sdk';
 
 import {Icon, Image, ToolBar} from '../../../utils/general';
 import dirs from './assets/dir.json';
 
-export const WnTerminal = ()=>{
+export const WnTerminal = () => {
+  const flags = useFlags()
   const apps = useSelector(state => state.apps);
   const wnapp = useSelector(state => state.apps.terminal);
   const [stack, setStack] = useState([
@@ -49,6 +51,33 @@ export const WnTerminal = ()=>{
         tmpStack.push(arg);
       }else{
         tmpStack.push("ECHO is on.");
+      }
+    }else if(type=="ld"){
+      if(arg){
+        tmpStack.push("Checking state of feature flag '" + arg + "' ...");
+        switch (typeof flags[arg]) {
+          case "object":
+            flags[arg].map((item) => {
+              tmpStack.push(item)
+            })
+            break;
+          case "string":
+            tmpStack.push(flags[arg])
+            break;
+          case "boolean":
+            tmpStack.push(flags[arg] ? "ON" : "OFF")
+            break;
+          case "number":
+            tmpStack.push(flags[arg].toString())
+            break;
+          default:
+            tmpStack.push('Flag not found.')
+            break;
+        }
+
+      } else {
+        tmpStack.push("Ted's LaunchDarkly Demo [V2.0]");
+        tmpStack.push("Usage: Check feature state with 'ld <your.feature.key>");
       }
     }
     else if(type=="eval"){
@@ -203,9 +232,9 @@ export const WnTerminal = ()=>{
       for (var i = 0; i < helpArr.length; i++) {
         tmpStack.push(helpArr[i]);
       }
-    }else if (type=="") {
+    } else if (type=="") {
 
-    }else{
+    } else{
       tmpStack.push(`'${type}' is not recognized as an internal or external command,`);
       tmpStack.push("operable program or batch file.")
       tmpStack.push("")
@@ -305,4 +334,4 @@ export const WnTerminal = ()=>{
       </div>
     </div>
   );
-}
+};

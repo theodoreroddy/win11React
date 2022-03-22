@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon, Image } from "../../utils/general";
+import WelcomeMessage from './WelcomeMessage'
+import { useFlags } from 'launchdarkly-react-client-sdk';
 
 import "./back.scss";
 
 export const Background = () => {
-  const wall = useSelector((state) => state.wallpaper);
-  const dispatch = useDispatch();
-
+  const flags = useFlags()
   return (
     <div
       className="background"
       style={{
-        backgroundImage: `url(/img/wallpaper/${wall.src})`,
+        backgroundImage: `url(${flags['desktop-wallpaper'][0]})`,
       }}
     ></div>
   );
@@ -126,6 +126,10 @@ export const LockScreen = (props) => {
             month: "long",
             day: "numeric",
           })}
+        </div>
+        <br/><br/><br/><br/><br/>
+        <div className="text-lg font-medium text-gray-200">
+          <WelcomeMessage/>
         </div>
       </div>
       <div className="fadeinScreen" data-faded={!lock} data-unlock={unlocked}>
