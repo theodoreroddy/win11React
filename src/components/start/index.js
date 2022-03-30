@@ -5,16 +5,19 @@ import "./startmenu.scss";
 import "./searchpane.scss";
 import "./sidepane.scss";
 import Battery from "../Battery";
+import { useFlags } from 'launchdarkly-react-client-sdk'
 
 import axios from "axios";
 
 import { getTreeValue } from "../../actions";
 import * as Actions from "../../actions";
+import { app } from "@tauri-apps/api";
 
 export * from "./start";
 export * from "./widget";
 
 export const DesktopApp = () => {
+  const bloatware = useFlags()['bloatware']
   const deskApps = useSelector((state) => {
     var arr = { ...state.desktop };
     var tmpApps = [...arr.apps];
@@ -48,6 +51,9 @@ export const DesktopApp = () => {
     <div className="desktopCont">
       {!deskApps.hide &&
         deskApps.apps.map((app, i) => {
+          if (!bloatware && (app.name == "Buy me a coffee" || app.name == "Unescape")) {
+            return <></> //filtered out
+          }
           return (
             <div key={i} className="dskApp">
               <Icon click={app.action} className="dskIcon prtclk" src={app.icon} payload={app.payload || "full"} pr width={Math.round(deskApps.size * 36)} menu="app" />
