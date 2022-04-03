@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon, Image } from "../../utils/general";
-import WelcomeMessage from './WelcomeMessage'
+import WelcomeMessage from './WelcomeMessage';
+import UserProfile from "../../UserProfile";
 import { useFlags } from 'launchdarkly-react-client-sdk';
 
 import "./back.scss";
@@ -133,8 +134,8 @@ export const LockScreen = (props) => {
         </div>
       </div>
       <div className="fadeinScreen" data-faded={!lock} data-unlock={unlocked}>
-        <Image className="rounded-full overflow-hidden" src="/img/asset/prof.jpg" w={200} ext />
-        <div className="mt-2 text-2xl font-medium text-gray-200">Blue Edge</div>
+        <Image className="rounded-full overflow-hidden" src={UserProfile.custom.avatar} w={200} ext />
+        <div className="mt-2 text-2xl font-medium text-gray-200">{`${UserProfile.firstName} ${UserProfile.lastName}`}</div>
         <div className="flex items-center mt-6 signInBtn" onClick={proceed}>
           Sign in
         </div>
