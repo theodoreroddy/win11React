@@ -2,7 +2,7 @@ import env from "react-dotenv"
 
 const SystemInformation = {
     "os": "Windows 11 React",
-    "version": 11.1,
+    "version": env.OS_VERSION,
     "platform": "js",
     "language": "en_US",
     "deployment_env": env.DEPLOYMENT_ENV
