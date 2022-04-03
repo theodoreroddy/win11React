@@ -6,11 +6,12 @@ import { Provider } from 'react-redux';
 import { asyncWithLDProvider } from 'launchdarkly-react-client-sdk';
 import UserProfile from './UserProfile'
 import SystemInformation from './SystemInformation';
+import env from "react-dotenv";
 
   (async () => {
     
     const LDProvider = await asyncWithLDProvider({
-      clientSideID: "6238e4a84409e214da367c6a",
+      clientSideID: env.LD_CLIENT_KEY,
       user: UserProfile,
       custom: SystemInformation,
       reactOptions: {

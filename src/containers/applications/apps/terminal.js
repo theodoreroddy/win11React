@@ -4,6 +4,7 @@ import { useFlags } from 'launchdarkly-react-client-sdk';
 
 import {Icon, Image, ToolBar} from '../../../utils/general';
 import dirs from './assets/dir.json';
+import env from "react-dotenv";
 
 export const WnTerminal = () => {
   const flags = useFlags()
@@ -52,7 +53,10 @@ export const WnTerminal = () => {
       }else{
         tmpStack.push("ECHO is on.");
       }
-    }else if(type=="ld"){
+    } else if(type=="status") {
+      tmpStack.push(`Current environment: ${env.DEPLOYMENT_ENV}`);
+      tmpStack.push(`LD Client Side ID: ${env.LD_CLIENT_KEY}`);
+    } else if(type=="ld") {
       if(arg){
         tmpStack.push("Checking state of feature flag '" + arg + "' ...");
         switch (typeof flags[arg]) {
