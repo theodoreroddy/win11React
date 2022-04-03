@@ -66,6 +66,6 @@
     "@tauri-apps/cli": "1.0.0-rc.2"
   },
   "react-dotenv": {
-    "whitelist": ["LD_CLIENT_KEY","DEPLOYMENT_ENV"]
+    "whitelist": ["LD_CLIENT_KEY","DEPLOYMENT_ENV","OS_VERSION"]
   }
 }
