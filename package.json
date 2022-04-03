@@ -18,11 +18,16 @@
     "@widgetbot/react-embed": "^1.4.0",
     "axios": "^0.21.1",
     "container-query-polyfill": "^0.1.2",
+    "dotenv": "^16.0.0",
+    "fs": "^0.0.1-security",
     "launchdarkly-react-client-sdk": "^2.25.1",
     "node-sass": "^7.0.0",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-canvas-draw": "^1.1.1",
     "react-dom": "^17.0.2",
+    "react-dotenv": "^0.1.3",
     "react-error-boundary": "^3.1.4",
     "react-player": "^2.9.0",
     "react-redux": "^7.2.4",
@@ -33,8 +38,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-dotenv && react-scripts start",
+    "build": "react-dotenv && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tauri": "tauri"
@@ -59,5 +64,8 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "1.0.0-rc.2"
+  },
+  "react-dotenv": {
+    "whitelist": ["LD_CLIENT_KEY","DEPLOYMENT_ENV"]
   }
 }
