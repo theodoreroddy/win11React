@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useFlags } from 'launchdarkly-react-client-sdk';
+import SystemInformation from '../../../SystemInformation';
 
 import {Icon, Image, ToolBar} from '../../../utils/general';
 import dirs from './assets/dir.json';
@@ -54,8 +55,17 @@ export const WnTerminal = () => {
         tmpStack.push("ECHO is on.");
       }
     } else if(type=="status") {
-      tmpStack.push(`Current environment: ${env.DEPLOYMENT_ENV}`);
-      tmpStack.push(`LD Client Side ID: ${env.LD_CLIENT_KEY}`);
+      if(arg){
+        if (arg == "all") {
+          tmpStack.push(JSON.stringify(SystemInformation));
+        } else {
+          tmpStack.push(SystemInformation[arg]);
+        }
+      } else {
+        tmpStack.push(`Current environment: ${env.DEPLOYMENT_ENV}`);
+        tmpStack.push(`LD Client Side ID: ${env.LD_CLIENT_KEY}`);
+        tmpStack.push(`Try  'status version', 'status all', etc`);
+      }
     } else if(type=="ld") {
       if(arg){
         tmpStack.push("Checking state of feature flag '" + arg + "' ...");

@@ -25,6 +25,7 @@ import {
 import {loadSettings} from './actions';
 import * as Applications from './containers/applications';
 import * as Drafts from './containers/applications/draft.js';
+import SystemInformation from './SystemInformation';
 
 
 function ErrorFallback({error, resetErrorBoundary}) {
@@ -133,6 +134,7 @@ function App() {
 
   return (
     <div className="App">
+      <title>{`${SystemInformation.deployment_env}`}</title>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
       {!wall.booted?<BootScreen dir={wall.dir}/>:null}
       {wall.locked?<LockScreen dir={wall.dir}/>:null}

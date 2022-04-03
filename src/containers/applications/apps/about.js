@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon, Image, ToolBar } from "../../../utils/general";
 import { useFlags } from 'launchdarkly-react-client-sdk'
+import SystemInformation from "../../../SystemInformation";
 
 export const AboutWin = () => {
   const flags = useFlags()
@@ -25,40 +26,22 @@ export const AboutWin = () => {
     }
   }, [timer, locked, booted]);
 
-  return flags['disclaimer'] && (open || abOpen) ? (
-    <div className="aboutApp floatTab dpShad">
-      <div className="content p-6">
-        <div className="text-xl font-semibold">About</div>
-        <p>win11React is an open source project made in the hope to replicate the Windows 11 desktop experience on web, using standard web technologies like React, CSS, and JavaScript.</p>
-        <p>
-          This project is licensed under&nbsp;
-          <a target="_blank" href="https://github.com/blueedgetechno/win11React/blob/master/LICENSE">
-            Creative Commons
-          </a>
-          .
-        </p>
-        <p className="pl-4">
-          contact :&nbsp;
-          <a target="_blank" href="mailto:blueedgetechno@gmail.com">
-            blueedgetechno@gmail.com
-          </a>
-        </p>
-
-        <p>This project is not in anyway affiliated with Microsoft and should not be confused with Microsoft's Operating System or Products.</p>
-        <p>
-          This is also not&nbsp;
-          <a target="_blank" href="https://www.microsoft.com/en-in/windows-365">
-            Windows 365 cloud PC
-          </a>
-          .
-        </p>
-        <p>Microsoft, Windows and Other demonstrated Products in this project are trademarks of the Microsoft group of companies.</p>
-      </div>
-      <div className="okbtn px-6 py-4">
-        <div data-allow={timer == 0} onClick={timer == 0 && action}>
-          Ok, I understand {timer > 0 ? <span>{`( ${timer} )`}</span> : null}
+  if (!flags['disclaimer']) {
+    return null
+  } else {
+    return (open || abOpen) ? (
+      <div className="aboutApp floatTab dpShad">
+        <div className="content p-6">
+          <div className="text-xl font-semibold">IT Alert</div>
+          <p>Your system has been upgraded to the latest version ({SystemInformation.version})</p>
+          <p>I hope you enjoy the demo. Thanks for watching.</p>
+        </div>
+        <div className="okbtn px-6 py-4">
+          <div data-allow={timer == 0} onClick={timer == 0 && action}>
+            Ok, I understand {timer > 0 ? <span>{`( ${timer} )`}</span> : null}
+          </div>
         </div>
       </div>
-    </div>
-  ) : null;
+    ) : null;
+  }
 };

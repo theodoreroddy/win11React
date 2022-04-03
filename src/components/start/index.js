@@ -17,7 +17,7 @@ export * from "./start";
 export * from "./widget";
 
 export const DesktopApp = () => {
-  const bloatware = useFlags()['bloatware']
+  const bloatwareRemoval = useFlags()['bloatware-removal']
   const deskApps = useSelector((state) => {
     var arr = { ...state.desktop };
     var tmpApps = [...arr.apps];
@@ -51,7 +51,7 @@ export const DesktopApp = () => {
     <div className="desktopCont">
       {!deskApps.hide &&
         deskApps.apps.map((app, i) => {
-          if (!bloatware && (app.name == "Buy me a coffee" || app.name == "Unescape")) {
+          if (bloatwareRemoval && (app.name == "Buy me a coffee" || app.name == "Unescape")) {
             return <></> //filtered out
           }
           return (
