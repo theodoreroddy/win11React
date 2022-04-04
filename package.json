@@ -18,7 +18,6 @@
     "@widgetbot/react-embed": "^1.4.0",
     "axios": "^0.21.1",
     "container-query-polyfill": "^0.1.2",
-    "dotenv": "^16.0.0",
     "fs": "^0.0.1-security",
     "launchdarkly-react-client-sdk": "^2.25.1",
     "node-sass": "^7.0.0",
@@ -66,6 +65,6 @@
     "@tauri-apps/cli": "1.0.0-rc.2"
   },
   "react-dotenv": {
-    "whitelist": ["LD_CLIENT_KEY","DEPLOYMENT_ENV"]
+    "whitelist": ["LD_CLIENT_KEY","DEPLOYMENT_ENV","OS_VERSION"]
   }
 }

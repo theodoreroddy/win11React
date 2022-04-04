@@ -1,8 +1,10 @@
 const UserProfile = {
-    "key": "a85a8e6b-348b-4011-a1ec-1e78e9620782",
+    "key": "823jn4hnjifjsd09gui3fscvs24likjnsdop89igsd",
     "firstName": "Ted",
-    "lastNane": "Roddy",
-    "email": "me@tedroddy.net"
+    "lastName": "Roddy",
+    "custom": {
+        "avatar": "https://www.tedroddy.net/apple-touch-icon-152x152.png"
+    }
 }
 
 export default UserProfile

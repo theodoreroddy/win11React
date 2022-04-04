@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import UserProfile from "../../UserProfile";
 import { Icon } from "../../utils/general";
 
 export const StartMenu = () => {
@@ -202,8 +203,8 @@ export const StartMenu = () => {
           </div>
           <div className="menuBar">
             <div className="profile handcr">
-              <Icon src="blueProf" ui rounded width={26} click="EXTERNAL" payload="https://blueedge.me" />
-              <div className="usName">Blue Edge</div>
+              <Icon src={UserProfile.custom.avatar} ui rounded width={26} click="EXTERNAL" payload="https://www.tedroddy.net" />
+              <div className="usName">{`${UserProfile.firstName} ${UserProfile.lastName}`}</div>
             </div>
             <div className="relative powerMenu">
               <div className="powerCont" data-vis={start.pwctrl}>

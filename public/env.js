@@ -1,4 +1,5 @@
 window.env = {
-  "LD_CLIENT_KEY": "6238e4a84409e214da367c6a",
-  "DEPLOYMENT_ENV": "production"
+  "LD_CLIENT_KEY": "624a28f9eeb2f51fdbd68c39",
+  "DEPLOYMENT_ENV": "local",
+  "OS_VERSION": "11.2"
 };

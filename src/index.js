@@ -8,16 +8,19 @@ import UserProfile from './UserProfile'
 import SystemInformation from './SystemInformation';
 import env from "react-dotenv";
 
-  (async () => {
-    
-    const LDProvider = await asyncWithLDProvider({
+(async () => {
+    const ldconfig = {
       clientSideID: env.LD_CLIENT_KEY,
-      user: UserProfile,
-      custom: SystemInformation,
+      user: {
+        ...UserProfile,
+        "custom": SystemInformation
+      },
       reactOptions: {
         useCamelCaseFlagKeys: false
       }
-    });
+    }
+    console.log(ldconfig)
+    const LDProvider = await asyncWithLDProvider(ldconfig);
     
     ReactDOM.render(
       <Provider store={store}>
