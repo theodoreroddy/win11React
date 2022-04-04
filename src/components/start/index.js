@@ -11,7 +11,6 @@ import axios from "axios";
 
 import { getTreeValue } from "../../actions";
 import * as Actions from "../../actions";
-import { app } from "@tauri-apps/api";
 
 export * from "./start";
 export * from "./widget";

@@ -246,9 +246,9 @@ export const WnTerminal = () => {
       for (var i = 0; i < helpArr.length; i++) {
         tmpStack.push(helpArr[i]);
       }
-    } else if (type=="") {
+    }else if (type=="") {
 
-    } else{
+    }else{
       tmpStack.push(`'${type}' is not recognized as an internal or external command,`);
       tmpStack.push("operable program or batch file.")
       tmpStack.push("")
@@ -348,4 +348,4 @@ export const WnTerminal = () => {
       </div>
     </div>
   );
-};
+}

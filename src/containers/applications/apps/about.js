@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Icon, Image, ToolBar } from "../../../utils/general";
 import { useFlags } from 'launchdarkly-react-client-sdk'
 import SystemInformation from "../../../SystemInformation";
+import { useTranslation } from 'react-i18next';
 
 export const AboutWin = () => {
   const flags = useFlags()
@@ -11,6 +12,7 @@ export const AboutWin = () => {
   const [open, setOpen] = useState(true && process.env.REACT_APP_ENV != "development");
   const [timer, setTimer] = useState(localStorage.getItem("closeAbout") == "true" ? 0 : 5);
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
 
   const action = () => {
     setOpen(false);
