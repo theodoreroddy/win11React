@@ -1,5 +1,7 @@
 # Win11 in React!
 
+This React app simulates a Windows 11 desktop environment with quite a bit of functonality.
+
 # How to use
 - Clone the repository ``` git clone https://github.com/theodoreroddy/win11React && cd win11react```
 - Install dependencies ``` npm install ```
