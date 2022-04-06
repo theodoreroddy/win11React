@@ -14,6 +14,6 @@ Be sure to create these features in your LaunchDarkly account as they will be us
 - `desktop-wallpaper` (array of url strings, specifies the wallpaper image)
 - `lock-screen-welcome-message` (string, displays a message on the lock screen)
 
-Once started, open the terminal and try running `ld` command to use my command line tool that checks feature states. `status` will also print relevant information.
+Once started, open the terminal (from the start menu) and try running `ld` command to use my command line tool that checks feature states. `status` will also print relevant information.
 
 ![screenshot](https://raw.githubusercontent.com/theodoreroddy/win11React/master/public/img/terminal.png "Screenshot")
